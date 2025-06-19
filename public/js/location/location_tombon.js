@@ -12,7 +12,7 @@ $(document).ready(function () {
         $('#subdistrict').empty().append('<option value="">-- เลือกตำบล --</option>');
 
         if (district) {
-            $.getJSON('/subdistrict/' + encodeURIComponent(district), function (res) {
+            $.getJSON('/blockage/phrae/subdistrict/' + encodeURIComponent(district), function (res) {
                 $.each(res.data, function (i, obj) {
                     $('#subdistrict').append('<option value="' + obj.vill_tunbol + '">' + obj.vill_tunbol + '</option>');
                 });

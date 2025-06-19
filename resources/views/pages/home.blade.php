@@ -253,22 +253,22 @@
             zoom: 9,
         });
 
-        // KML Layer
-        omnivore.kml('kml/PHRAE.kml').on('ready', function () {
+        // KML Layer 
+        omnivore.kml('{{ asset('kml/PHRAE.kml') }}').on('ready', function () {
             this.setStyle({ fillOpacity: 0, color: "#1f3d3f", weight: 4 });
         }).addTo(borders);
 
-        const pin = L.icon({
-            iconUrl: 'images/logo/pin.png',
-            iconRetinaUrl: 'images/logo/pin.png',
+        var pin = L.icon({
+            iconUrl: '{{ asset('images/logo/pin.png') }}',
+            iconRetinaUrl: '{{ asset('images/logo/pin.png') }}',
             iconSize: [20, 36],
             iconAnchor: [5, 30],
             popupAnchor: [0, 0]
         });
 
-        const pinMO = L.icon({
-            iconUrl: 'images/logo/pin.png',
-            iconRetinaUrl: 'images/logo/pin.png',
+        var pinMO = L.icon({
+            iconUrl: '{{ asset('images/logo/pin.png') }}',
+            iconRetinaUrl: '{{ asset('images/logo/pin.png') }}',
             iconSize: [10, 16],
             iconAnchor: [5, 30],
             popupAnchor: [0, 0]
@@ -277,7 +277,7 @@
         const mo = window.matchMedia("(max-width: 700px)").matches ? 0 : 1;
 
         function addPin(layer, index, mo) {
-            $.getJSON('form/getDamage/' + amp[index], function (data) {
+            $.getJSON("{{ asset('form/getDamage') }}/" + amp[index], function (data) {
                 data.forEach(item => {
                     const [y, x] = item.geometry.coordinates;
                     const text = `

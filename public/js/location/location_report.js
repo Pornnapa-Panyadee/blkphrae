@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // โหลดอำเภอของจังหวัดแพร่
-    $.getJSON('/blockage/phraegetdistrict/แพร่', function (data) {
+    $.getJSON('https://watercenter.scmc.cmu.ac.th/blockage/phrae/getdistrict/แพร่', function (data) {
         $.each(data, function (i, obj) {
             $('#blk_district').append('<option value="' + obj.vill_district + '">' + obj.vill_district + '</option>');
         });
@@ -12,7 +12,7 @@ $(document).ready(function () {
         $('#blk_tumbol').empty().append('<option value="">-- เลือกตำบล --</option>');
 
         if (district) {
-            $.getJSON('/blockage/phrae/subdistrict/' + encodeURIComponent(district), function (res) {
+            $.getJSON('https://watercenter.scmc.cmu.ac.th/blockage/phrae/subdistrict/' + encodeURIComponent(district), function (res) {
                 $.each(res.data, function (i, obj) {
                     $('#blk_tumbol').append('<option value="' + obj.vill_tunbol + '">' + obj.vill_tunbol + '</option>');
                 });
@@ -27,7 +27,7 @@ $(document).ready(function () {
         $('#blk_village').empty().append('<option value="">-- เลือกหมู่บ้าน --</option>');
 
         if (district && tumbol) {
-            $.getJSON('/blockage/phrae/getVillage/' + encodeURIComponent(district) + '/' + encodeURIComponent(tumbol), function (res) {
+            $.getJSON('https://watercenter.scmc.cmu.ac.th/blockage/phrae/getVillage/' + encodeURIComponent(district) + '/' + encodeURIComponent(tumbol), function (res) {
                 $.each(res.data, function (i, obj) {
                     $('#blk_village').append('<option value="หมู่ที่ ' + obj.vill_moo + ' ' + obj.vill_name + '"> หมู่ที่ ' + obj.vill_moo + ' ' + obj.vill_name + '</option>');
                 });

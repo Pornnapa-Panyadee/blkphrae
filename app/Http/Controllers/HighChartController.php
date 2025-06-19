@@ -47,7 +47,7 @@ class HighChartController extends Controller
                 COUNT(problem_details.hum_soil_cover) as hum_soil_cover,
                 COUNT(problem_details.hum_trash) as hum_trash,
                 COUNT(problem_details.hum_other) as hum_other"))
-            ->where('blockage_locations.blk_province', '=', "ลำปาง")
+            ->where('blockage_locations.blk_province', '=', "แพร่")
             ->get();
         //dd($countNum);
         $nat = $countNum[0]->nat_erosion+$countNum[0]->nat_shoal+$countNum[0]->nat_missing+$countNum[0]->nat_winding+$countNum[0]->nat_weed+$countNum[0]->nat_other;
@@ -93,7 +93,7 @@ class HighChartController extends Controller
                     COUNT(problem_details.hum_soil_cover) as hum_soil_cover,
                     COUNT(problem_details.hum_trash) as hum_trash,
                     COUNT(problem_details.hum_other) as hum_other"))
-                    ->where('blockage_locations.blk_province', '=', "ลำปาง")
+                    ->where('blockage_locations.blk_province', '=', "แพร่")
                     ->get();
         $countBar=[["ตลิ่งพังการกัดเซาะ",$countBar[0]->nat_erosion],
                    ["การทับถมของตะกอน (ลำน้ำตื้นเขิน)",$countBar[0]->nat_shoal],
@@ -321,7 +321,7 @@ class HighChartController extends Controller
                 ];
 
         //dd($countNum);
-        $amp = "อำเภอ".$amp."จังหวัดเชียงใหม่";
+        $amp = "อำเภอ".$amp."จังหวัดแพร่";
         return view('chart/chart_Allsee', compact('countNum','amp','countBar'));
     }
 
@@ -354,7 +354,7 @@ class HighChartController extends Controller
                 COUNT(problem_details.hum_soil_cover) as hum_soil_cover,
                 COUNT(problem_details.hum_trash) as hum_trash,
                 COUNT(problem_details.hum_other) as hum_other"))
-            ->where('blockage_locations.blk_province', '=', "เชียงใหม่")
+            ->where('blockage_locations.blk_province', '=', "แพร่")
             ->get();
         //dd($countNum);
         $nat = $countNum[0]->nat_erosion+$countNum[0]->nat_shoal+$countNum[0]->nat_missing+$countNum[0]->nat_winding+$countNum[0]->nat_weed+$countNum[0]->nat_other;
@@ -400,7 +400,7 @@ class HighChartController extends Controller
                     COUNT(problem_details.hum_soil_cover) as hum_soil_cover,
                     COUNT(problem_details.hum_trash) as hum_trash,
                     COUNT(problem_details.hum_other) as hum_other"))
-                    ->where('blockage_locations.blk_province', '=', "เชียงใหม่")
+                    ->where('blockage_locations.blk_province', '=', "แพร่")
                     ->get();
         $countBar=[["ตลิ่งพังการกัดเซาะ",$countBar[0]->nat_erosion],
                    ["การทับถมของตะกอน (ลำน้ำตื้นเขิน)",$countBar[0]->nat_shoal],
@@ -423,7 +423,7 @@ class HighChartController extends Controller
                     ["สิ่งปฏิกูล",$countBar[0]->hum_trash],
                     ["อื่นๆ(มนุษย์)",$countBar[0]->hum_other]
                   ];
-        $amp = "รวมทุกอำเภอของลุ่มน้ำแม่จาง จังหวัดลำปาง";
+        $amp = "รวมทุกอำเภอ จังหวัดแพร่";
                  
         return view('chart/chart', compact('countNum','countBar','amp'));
 
@@ -633,7 +633,7 @@ class HighChartController extends Controller
                 ];
 
         // dd($countNum);
-        $amp = "อำเภอ".$amp."จังหวัดเชียงใหม่";
+        $amp = "อำเภอ".$amp."จังหวัดแพร่";
         return view('chart/chart', compact('countNum','amp','countBar'));
     }
 
@@ -773,7 +773,7 @@ class HighChartController extends Controller
                         COUNT(problem_details.hum_soil_cover) as hum_soil_cover,
                         COUNT(problem_details.hum_trash) as hum_trash,
                         COUNT(problem_details.hum_other) as hum_other"))
-                    ->where('blockage_locations.blk_province', '=', "เชียงใหม่")
+                    ->where('blockage_locations.blk_province', '=', "แพร่")
                     ->get();
     //dd($countNum);
     $nat = $countNum[0]->nat_erosion+$countNum[0]->nat_shoal+$countNum[0]->nat_missing+$countNum[0]->nat_winding+$countNum[0]->nat_weed+$countNum[0]->nat_other;
@@ -819,7 +819,7 @@ class HighChartController extends Controller
                     COUNT(problem_details.hum_soil_cover) as hum_soil_cover,
                     COUNT(problem_details.hum_trash) as hum_trash,
                     COUNT(problem_details.hum_other) as hum_other"))
-                    ->where('blockage_locations.blk_province', '=', "เชียงใหม่")
+                    ->where('blockage_locations.blk_province', '=', "แพร่")
                     ->get();
 
     $countBar=[["ตลิ่งพังการกัดเซาะ",$countBar[0]->nat_erosion],

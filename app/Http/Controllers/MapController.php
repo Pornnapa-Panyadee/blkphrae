@@ -108,7 +108,7 @@ class MapController extends Controller
             //$locationSt = new Point($request->latstart,$request->longstart);
             
             $point =($data[0]->blk_start_location);
-            if($data[$i]->blockageLocation->blk_province=="เชียงใหม่"){
+            if($data[$i]->blockageLocation->blk_province=="แพร่"){
                 $result[] = [
                     'id' => $data[$i]->blk_id,
                     'type' => "Feature",

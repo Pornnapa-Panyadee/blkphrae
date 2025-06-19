@@ -9,11 +9,11 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Mitr|Prompt" rel="stylesheet">
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}"> 
-    <link rel="stylesheet" href="{{ asset('fonts/fontawesome/css/fontawesome-all.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.bootstrap4.css')}}">
-    
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+
     <!-- leaflet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" crossorigin=""/>
@@ -106,7 +106,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom: 20px;">
                                         <div id="map" style="width: 100%;" align="center"></div>
                                         <br>
-                                        <center><img  src="{{ asset('images/logo/manual.png') }}" width=80%></center>
+                                        <center><img src="images/logo/manual.png" width="80%"></center>
                                     </div>
                                     <br><br>
                                     <!-- ============================================================== -->
@@ -163,25 +163,31 @@
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        <?php for($i = 0;$i < count($data);$i++){?>
-                                                                            <tr align="center">
-                                                                                <td >{{$i+1}}</td>
-                                                                                <td data-label="รหัส"> <a href='{{ asset('/report/pdf/') }}/{{$data[$i]->blk_id}}' > {{$data[$i]->blk_code}} </a></td>
-                                                                                <td align="left" data-label="ลำน้ำ">{{$data[$i]->river_name}}, {{$data[$i]->river_main}} </td>
-                                                                                <td align="left" data-label="หมู่บ้าน">{{$data[$i]->blk_village}} </td>
-                                                                                <td align="left" data-label="ตำบล">ต.{{$data[$i]->blk_tumbol}}</td>
-                                                                                <td data-label="อำเภอ">อ.{{$data[$i]->blk_district}}</td>
-                                                                    
-                                                                                
-                                                                                <td class="btn1">
-                                                                                    <div class="btn-group ml-auto">
-                                                                                        <a href='{{ asset('/report/pdf/') }}/{{$data[$i]->blk_id}}' target=\"_blank\">  <button class="btn btn-sm btn-outline-light" ><i class="fas fa-eye"></i> รายงาน</button> </a>
-                                                                                        <a href='{{ asset('/report/photo/') }}/{{$data[$i]->blk_id}}' target=\"_blank\">  <button class="btn btn-sm btn-outline-light"><i class="fas fa-images"></i> ภาพประกอบ</button> </a>
-                                                                                        <a href='{{ asset('/map/') }}/{{$data[$i]->blk_id}}' target=\"_blank\">  <button class="btn btn-sm btn-outline-light"><i class="fas fa-map-pin"></i> ตำแหน่ง</button> </a>
-                                                                                    </div>
-                                                                                </td>                             
-                                                                            </tr>
-                                                                        <?php }?>
+                                                                    <?php for($i = 0;$i < count($data);$i++){?>
+                                                                        <tr align="center">
+                                                                            <td>{{$i+1}}</td>
+                                                                            <td data-label="รหัส"> <a href='report/pdf/{{$data[$i]->blk_id}}'> {{$data[$i]->blk_code}} </a></td>
+                                                                            <td align="left" data-label="ลำน้ำ">{{$data[$i]->river_name}}, {{$data[$i]->river_main}} </td>
+                                                                            <td align="left" data-label="หมู่บ้าน">{{$data[$i]->blk_village}} </td>
+                                                                            <td align="left" data-label="ตำบล">ต.{{$data[$i]->blk_tumbol}}</td>
+                                                                            <td data-label="อำเภอ">อ.{{$data[$i]->blk_district}}</td>
+
+                                                                            <td class="btn1">
+                                                                                <div class="btn-group ml-auto">
+                                                                                    <a href='report/pdf/{{$data[$i]->blk_id}}' target="_blank">
+                                                                                        <button class="btn btn-sm btn-outline-light"><i class="fas fa-eye"></i> รายงาน</button>
+                                                                                    </a>
+                                                                                    <a href='report/photo/{{$data[$i]->blk_id}}' target="_blank">
+                                                                                        <button class="btn btn-sm btn-outline-light"><i class="fas fa-images"></i> ภาพประกอบ</button>
+                                                                                    </a>
+                                                                                    <a href='map/{{$data[$i]->blk_id}}' target="_blank">
+                                                                                        <button class="btn btn-sm btn-outline-light"><i class="fas fa-map-pin"></i> ตำแหน่ง</button>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    <?php }?>
+
                                                                     
                                                                     </tbody>
                                                                 
@@ -248,21 +254,21 @@
         });
 
         // KML Layer
-        omnivore.kml('{{ asset('kml/PHRAE.kml') }}').on('ready', function () {
+        omnivore.kml('kml/PHRAE.kml').on('ready', function () {
             this.setStyle({ fillOpacity: 0, color: "#1f3d3f", weight: 4 });
         }).addTo(borders);
 
         const pin = L.icon({
-            iconUrl: '{{ asset('images/logo/pin.png') }}',
-            iconRetinaUrl: '{{ asset('images/logo/pin.png') }}',
+            iconUrl: 'images/logo/pin.png',
+            iconRetinaUrl: 'images/logo/pin.png',
             iconSize: [20, 36],
             iconAnchor: [5, 30],
             popupAnchor: [0, 0]
         });
 
         const pinMO = L.icon({
-            iconUrl: '{{ asset('images/logo/pin.png') }}',
-            iconRetinaUrl: '{{ asset('images/logo/pin.png') }}',
+            iconUrl: 'images/logo/pin.png',
+            iconRetinaUrl: 'images/logo/pin.png',
             iconSize: [10, 16],
             iconAnchor: [5, 30],
             popupAnchor: [0, 0]
@@ -271,25 +277,25 @@
         const mo = window.matchMedia("(max-width: 700px)").matches ? 0 : 1;
 
         function addPin(layer, index, mo) {
-            $.getJSON("{{ asset('form/getDamage') }}/" + amp[index], function (data) {
+            $.getJSON('form/getDamage/' + amp[index], function (data) {
                 data.forEach(item => {
                     const [y, x] = item.geometry.coordinates;
                     const text = `
                         <font style="font-family: 'Mitr';" size="3" color="#1AA90A">
-                            รหัส : <a href='{{ asset('/report/pdf') }}/${item.blk_id}' target="_blank">${item.blk_code}</a>
+                            รหัส : <a href='report/pdf/${item.blk_id}' target="_blank">${item.blk_code}</a>
                         </font><br>
                         <font style="font-family: 'Mitr';" size="2" color="#466DF3">ลำน้ำ : ${item.river}</font><br>
                         <font style="font-family: 'Mitr';" size="2" color="#466DF3">ที่ตั้ง : ${item.location} ต.${item.tambol} อ.${item.district}</font><br><br>
                         <table align="center">
                             <tr>
                                 <td width=47%>
-                                    <a href='{{ asset('/report/pdf') }}/${item.blk_id}' target="_blank">
+                                    <a href='report/pdf/${item.blk_id}' target="_blank">
                                         <button class="btn btn-sm btn-outline-light"><i class="fas fa-eye"></i> รายงาน</button>
                                     </a>
                                 </td>
                                 <td width=6%></td>
                                 <td width=47%>
-                                    <a href='{{ asset('/report/photo') }}/${item.blk_id}' target="_blank">
+                                    <a href='report/photo/${item.blk_id}' target="_blank">
                                         <button class="btn btn-sm btn-outline-light"><i class="fas fa-images"></i> ภาพประกอบ</button>
                                     </a>
                                 </td>
@@ -298,6 +304,7 @@
                     L.marker([x, y], { icon: mo ? pin : pinMO }).addTo(layer).bindPopup(text);
                 });
             });
+
         }
 
         // Add pins for all amphurs

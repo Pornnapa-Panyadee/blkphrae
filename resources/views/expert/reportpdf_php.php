@@ -247,16 +247,16 @@
                             <div class="title m-b-md" style="margin-top:-30px;">
                                 <table>
                                     <tr>
-                                        <td width="20%" align="right" >
-                                            <img src='images/footer/lampang.png' width="40px" style="margin-top:20px;">
-                                            <img src='images/footer/egat.jpg' width="60px">
+                                        <td width="50px;"></td>
+                                        <td width="30%" align="right">
+                                            <img src='images/footer/hii.png' width="50px" style="margin:10px;">
                                         </td>
                                         <td width="60%">
-                                            <div style="font-weight: bold;"> ข้อมูลสภาพปัญหาและแนวทางการแก้ไขปัญหาเบื้องต้นของตำแหน่งการกีดขวางทางน้ำ พื้นที่ลุ่มน้ำแม่จาง จังหวัดลำปาง</div>
+                                            <div style="font-weight: bold;"> ข้อมูลสภาพปัญหาและแนวทางการแก้ไขปัญหาเบื้องต้นของตำแหน่งการกีดขวางทางน้ำ จังหวัดเชียงใหม่</div>
                                         </td>
-                                        <td width="20%" align="left">
-                                            <img src='images/footer/cmu.png' width="40px"></td>
-                                        </td>  
+                                        <td align="left">
+                                            <img src='images/footer/cmu.png' width="50px" style="margin:10px;">
+                                        </td>
                                     </tr>
                                 </table>
                             </div>

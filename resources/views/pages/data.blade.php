@@ -105,7 +105,7 @@
                                                         <td data-label="ที่ตั้ง">{{$data[$i]->blockageLocation->blk_village}} </td>
                                                         <td>{{$data[$i]->blockageLocation->blk_tumbol}} </td>
                                                         <td>{{$data[$i]->blockageLocation->blk_district}}</td>
-                                                        <td>ลำปาง</td>
+                                                        <td>แพร่</td>
                                                         <td>{{ $data[$i]->blockageLocation->blk_start_utm->getLat()}}</td>
                                                         <td>{{ $data[$i]->blockageLocation->blk_start_utm->getLng()}}</td>
 

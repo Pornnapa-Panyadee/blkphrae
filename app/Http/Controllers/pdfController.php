@@ -291,7 +291,7 @@ class pdfController extends Controller
                       \DB::raw('ST_Y(blockage_locations.blk_end_utm) as lat_utm_stop'),
                       \DB::raw('ST_X(blockage_locations.blk_end_utm) as lng_utm_stop')
                     )
-            ->where ('blockage_locations.blk_province',"เชียงใหม่")
+            ->where ('blockage_locations.blk_province',"แพร่")
             ->groupBy('blockages.blk_id')
             ->get();
             // dd($problem);

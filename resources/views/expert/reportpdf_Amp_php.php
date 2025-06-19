@@ -149,12 +149,13 @@
     <div class="text_report1">ของตำแหน่งการกีดขวางทางน้ำ</div>
     <?php if ($tumbol!="sum"){?>
         <div class="text_report2">ตำบล<?php echo $tumbol; ?></div>
-        <div class="text_report1">อำเภอ<?php echo $amp; ?> จังหวัดลำปาง</div>
+        <div class="text_report1">อำเภอ<?php echo $amp; ?> จังหวัดแพร่</div>
     <?php }else{ ?> 
-        <div class="text_report5">อำเภอ<?php echo $amp; ?> จังหวัดลำปาง</div>
+        <div class="text_report5">อำเภอ<?php echo $amp; ?> จังหวัดแพร่</div>
     <?php }?>
-    <div class="text_report3"> โครงการพัฒนาระบบข้อมูลสารสนเทศของสิ่งกีดขวางทางน้ำในลำน้ำคูคลองและถนน </div>
-    <div class="text_report3"> ในพื้นที่ลุ่มน้ำแม่จาง จังหวัดลำปาง</div>
+    <div class="text_report3"> โครงการพัฒนาระบบการสำรวจและฐานข้อมูลเพื่อบริหารจัดการพื้นที่เสี่ยงภัยน้ำท่วมและภัยแล้ง
+     </div>
+    <div class="text_report3"> ระดับจังหวัดในพื้นที่ภาคเหนือตอนบน (ระยะที่ 1)</div>
     
 
         </div>
@@ -315,11 +316,10 @@
                                         <table>
                                             <tr>
                                                 <td width="20%" align="right" >
-                                                    <img src='images/footer/lampang.png' width="30px" style="margin-top:20px;">
-                                                    <img src='images/footer/egat.jpg' width="50px">
+                                                    <img src='images/footer/hii.png' width="50px">
                                                 </td>
                                                 <td width="60%">
-                                                    <div class="texthead" > ข้อมูลสภาพปัญหาและแนวทางการแก้ไขปัญหาเบื้องต้นของตำแหน่งการกีดขวางทางน้ำ พื้นที่ลุ่มน้ำแม่จาง จังหวัดลำปาง</div>
+                                                    <div class="texthead" > ข้อมูลสภาพปัญหาและแนวทางการแก้ไขปัญหาเบื้องต้นของตำแหน่งการกีดขวางทางน้ำ พื้นที่จังหวัดแพร่</div>
                                                 </td>
                                                 <td width="20%" align="left">
                                                     <img src='images/footer/cmu.png' width="30px"></td>

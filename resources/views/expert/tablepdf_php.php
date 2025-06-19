@@ -141,12 +141,13 @@
         <div class="text_report1">ข้อมูลสภาพปัญหาและแนวทางการ</div>
         <?php if ($tumbol!="sum"){?>
             <div class="text_report2">ตำบล<?php echo $tumbol; ?></div>
-            <div class="text_report1">อำเภอ<?php echo $amp_req; ?> จังหวัดลำปาง</div>
+            <div class="text_report1">อำเภอ<?php echo $amp_req; ?> จังหวัดแพร่</div>
         <?php }else{ ?> 
-            <div class="text_report5">อำเภอ<?php echo $amp_req; ?> จังหวัดลำปาง</div>
+            <div class="text_report5">อำเภอ<?php echo $amp_req; ?> จังหวัดแพร่</div>
         <?php }?>
-        <div class="text_report3"> โครงการพัฒนาระบบข้อมูลสารสนเทศของสิ่งกีดขวางทางน้ำในลำน้ำคูคลองและถนน </div>
-        <div class="text_report3"> ในพื้นที่ลุ่มน้ำแม่จาง จังหวัดลำปาง</div>
+        <div class="text_report3"> โครงการพัฒนาระบบการสำรวจและฐานข้อมูลเพื่อบริหารจัดการพื้นที่เสี่ยงภัยน้ำท่วมและภัยแล้ง
+        </div>
+        <div class="text_report3"> ระดับจังหวัดในพื้นที่ภาคเหนือตอนบน (ระยะที่ 1)  ในพื้นที่จังหวัดแพร่</div>
     </div>
     <footer>
         หมายเหตุ ข้อมูลใช้เพื่อการศึกษาวางแผน ไม่สามารถใช้อ้างอิงทางกฎหมายและคดีความ

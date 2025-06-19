@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // โหลดอำเภอของจังหวัดแพร่
-    $.getJSON('/getdistrict/แพร่', function (data) {
+    $.getJSON('/blockage/phrae/getdistrict/แพร่', function (data) {
         $.each(data, function (i, obj) {
             $('#district').append('<option value="' + obj.vill_district + '">' + obj.vill_district + '</option>');
         });

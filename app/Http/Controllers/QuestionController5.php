@@ -49,7 +49,7 @@ class QuestionController5 extends Controller
                 return ("01");
             }else{
                 $names = str_split($users->$text);
-                    $code =$names[13].$names[14];
+                    $code =$names[14].$names[15];
                     $num=$code+1;
                     // dd($num);
                     if($num<10){

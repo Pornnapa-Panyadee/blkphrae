@@ -235,7 +235,7 @@
             zoom: 9,
         });
         // KML Layer
-        omnivore.kml('https://watercenter.scmc.cmu.ac.th/blockage/phrae/kml/PHRAE.kml').on('ready', function () {
+        omnivore.kml('{{ asset('kml/PHRAE.kml') }}').on('ready', function () {
             this.setStyle({ fillOpacity: 0, color: "#1f3d3f", weight: 4 });
         }).addTo(borders);
 

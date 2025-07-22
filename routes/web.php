@@ -24,8 +24,8 @@ Route::get('/sendmailforgot/{email}', 'SendPasswordForgetController@forgetUserNa
 // admin verify user //
 Route::get('/usersverify', 'ManagmemntVerifyUserController@managementVerifyusers');
 // 
-Route::get('/','DataForExpertController@underconstruction');
-// Route::get('/','DataForExpertController@getDataforHome');
+// Route::get('/','DataForExpertController@underconstruction');
+Route::get('/','DataForExpertController@getDataforHome');
 
 // //Route::get('/detail',function () {return view('pages/framework_detail');});
 // //Route::get('/chiangmai','DataForExpertController@getDataforHome');

@@ -27,55 +27,8 @@ use Image;
 class DataForExpertController extends Controller
 {
     // Home and Admin 
-      public function underconstruction(User $user, Request $request) {
-        // return view('guest.warning'); 
-        if(Auth::guest()){
-            return view('pages.underconstruction'); 
-        }else{
-            $username = Auth::user()->name;
-            $lastname = Auth::user()->LName;
-            $position =Auth::user()->Position;
-            $department =Auth::user()->Department;
-            if(Auth::user()->status_work=="surveyor1"){
-                
-                $data = DB::table('blockage_locations')
-                    ->join('blockages', 'blockages.blk_location_id', '=', 'blockage_locations.blk_location_id')
-                    ->join('rivers', 'rivers.river_id', '=', 'blockages.river_id')
-                    ->where('blockages.blk_user_name', '=', $username)
-                    ->get();            
-                // dd($data);
-            }else{
-                $data = DB::table('blockage_locations')
-                    ->join('blockages', 'blockages.blk_location_id', '=', 'blockage_locations.blk_location_id')
-                    ->join('rivers', 'rivers.river_id', '=', 'blockages.river_id')
-                    ->where('blockage_locations.blk_province', '=', "ลำปาง")
-                    ->get();
-                // dd($data);
-            }
-
-            $districtData['data'] = Page::getDistrict();
-
-            // dd(isset($data));     
-           
-                            
-            if(Auth::user()->status_work=="surveyor1"){
-                if(isset($data)){
-                    $location =NULL;
-                    // $location =BlockageLocation::where('blk_location_id', $data[0]->blk_location_id)->get();   
-                    // dd($data);
-                    $location_x= 18.290015;
-                    $location_y = 99.656525;
-                    return view('pages.surveyor1',compact('data','districtData','username','lastname','position','department','location_x','location_y'));
-                }else{
-                    $location =BlockageLocation::where('blk_location_id', $data[0]->blk_location_id)->get();   
-                    return view('pages.surveyor1',compact('data','districtData','username','lastname','position','department','location'));
-                }
-                   
-            }else{
-                
-                    return view('pages.admin',compact('data','districtData','username','lastname','position','department'));
-            }   
-        }         
+    public function underconstruction(User $user, Request $request) {
+        return view('pages.underconstruction');      
     }
     public function getDataforHome(User $user, Request $request){
         if(Auth::guest()){
@@ -108,7 +61,8 @@ class DataForExpertController extends Controller
             }           
             $districtData['data'] = Page::getDistrict();
             // dd($districtData);
-            return view('pages.home',compact('data','districtData','x','y','z'));
+            // return view('pages.home',compact('data','districtData','x','y','z'));
+            return view('pages.underconstruction');
         }else{
             $username = Auth::user()->name;
             $lastname = Auth::user()->LName;

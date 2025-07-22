@@ -24,65 +24,79 @@ Route::get('/sendmailforgot/{email}', 'SendPasswordForgetController@forgetUserNa
 // admin verify user //
 Route::get('/usersverify', 'ManagmemntVerifyUserController@managementVerifyusers');
 // 
-// Route::get('/',function () {return view('pages/framework');});
-Route::get('/','DataForExpertController@getDataforHome');
-Route::get('/detail',function () {return view('pages/framework_detail');});
-// Route::get('/chiangmai','DataForExpertController@getDataforHome');
-Route::get('/fang/{fang}','DataForExpertController@getDataforHome');
+Route::get('/','DataForExpertController@underconstruction');
+// Route::get('/','DataForExpertController@getDataforHome');
+
+// //Route::get('/detail',function () {return view('pages/framework_detail');});
+// //Route::get('/chiangmai','DataForExpertController@getDataforHome');
+// //Route::get('/fang/{fang}','DataForExpertController@getDataforHome');
 Route::get('box','DataForExpertController@getDataforHome1');
 Route::get('login', function () {return view('auth/login');});
-Route::get('register', function () {return view('auth/register');});
+Route::get('/register', function () { abort(404); });
+// Route::get('register', function () {return view('auth/register');});
 // verify message 
 Route::get('/verifymessage', function(){return view('verifyMessage');});
-//Route::get('/report/map', function () {return view('pages.testmap');});
 
 
 //Route::get('/backup', function () {return view('result');});
 
+// Route::get('report', 'FormBlockageController@reportBackend');
+// Route::get('/report/map', 'MapController@getDamageByAmp'); 
+// Route::get('/report/map', 'MapController@getDamageByAmpG'); 
+// Route::get('/report/mapCM', 'MapController@getDamageByAmpFang');
 
-Route::get('report', 'FormBlockageController@reportBackend');
-Route::get('/report/map', 'MapController@getDamageByAmp'); 
-Route::get('/report/map', 'MapController@getDamageByAmpG'); 
-Route::get('/report/mapCM', 'MapController@getDamageByAmpFang');
 
+// Tap 1-------------------------------------------------------------------------------------------
+
+Route::get('/reports/map', 'DataForExpertController@underconstruction');
+Route::get('/reports/problem', 'DataForExpertController@underconstruction');
+Route::get('reports/problem/pdf', 'DataForExpertController@underconstruction');
+Route::get('/reports/solution', 'DataForExpertController@underconstruction');
+Route::get('reports/solution/pdf', 'DataForExpertController@underconstruction');
+Route::get('/reports/summary', 'DataForExpertController@underconstruction');
+Route::get('report/pdf/amp','DataForExpertController@underconstruction');
+
+Route::get('report/chart', 'DataForExpertController@underconstruction');
+Route::get('report/chart/{amp}', 'DataForExpertController@underconstruction');
+Route::get('chart', 'DataForExpertController@underconstruction');
+Route::get('chart/{amp}', 'DataForExpertController@underconstruction');
+Route::get('report/chartCM', 'DataForExpertController@underconstruction');
+Route::get('report/chartCM/{amp}', 'DataForExpertController@underconstruction');
 
 
 // --Drop Down select AMP or tambol to gen pdf --
-Route::get('/reports/map', 'MapController@getDamageByAmpG'); 
-// Route::get('/reports/map', 'MapController@getDamageByAmpFang'); 
-Route::get('/reports/problem', function () {return view('general/problem');});
-Route::get('reports/problem/pdf', "pdfController@tablegen")->name('reports/pdf');
-Route::get('/reports/solution', function () {return view('general/solution');});
-Route::get('reports/solution/pdf', "DataForExpertController@solutionPDFgen")->name('reports/solution');
-Route::get('/reports/summary', function () {return view('general/summary');});
+// Route::get('/reports/map', 'MapController@getDamageByAmpG'); 
+// Route::get('/reports/problem', function () {return view('general/problem');});
+// Route::get('reports/problem/pdf', "pdfController@tablegen")->name('reports/pdf');
+// Route::get('/reports/solution', function () {return view('general/solution');});
+// Route::get('reports/solution/pdf', "DataForExpertController@solutionPDFgen")->name('reports/solution');
+// Route::get('/reports/summary', function () {return view('general/summary');});
+// Route::get('report/pdf/amp','DataForExpertController@expertPDFAmp')->name('report/pdf/amp');
 
-Route::get('report/pdf/amp','DataForExpertController@expertPDFAmp')->name('report/pdf/amp');
+// Route::get('report/chart', 'HighChartController@index')->name('report/chart');
+// Route::get('report/chart/{amp}', 'HighChartController@prob');
+// Route::get('chart', 'HighChartController@indexAll')->name('chartAll');
+// Route::get('chart/{amp}', 'HighChartController@probAll');
+// Route::get('report/chartCM', 'HighChartController@indexCM')->name('report/chart');
+// Route::get('report/chartCM/{amp}', 'HighChartController@probCM');
+
 // --Drop Down select AMP or tambol to gen pdf --
-
+// Tap 1-------------------------------------------------------------------------------------------
 
 Route::get('report_admin', 'FormBlockageController@getBlockagebyAdmin');
 Route::get('report_all', 'FormBlockageController@getBlockagebyAdminAll');
 Route::get('report_detail/{id}', 'FormBlockageController@reportBlockageDetail');
 Route::get('blocker', 'FormBlockageController@getBlockagebyUser')->name('blocker');
 Route::get('data', 'FormBlockageController@getdata')->name('data');
-
-
-
 Route::get('newblockage', 'PagesController@newFormblockage');
 Route::get('reportBlockage/{id}', ['as' => 'reportBlockage', 'uses' => 'FormBlockageController@reportBlockage']);
-
 Route::get('upphoto/{id}', ['as' => 'upphoto', 'uses' => 'QuestionController4@BlockageId']);
-
-
-
 Route::get('form/questionnaire', "QuestionController@questionnaire");
 Route::get('form/questionnaire2', "QuestionController2@questionnaire2")->name('form.Qnaire2');
 Route::get('form/questionnaire3', "QuestionController3@questionnaire3")->name('form.Qnaire3');
 Route::get('form/questionnaire4', "QuestionController4@questionnaire4")->name('form.Qnaire4');
-
 Route::get('form/uploadimage/{id}', "QuestionController5@questionnaire5")->name('form.Qnaire5');
 Route::get('photoremove/{id}', "QuestionController5@photoremove");
-
 
 Route::get('form/questionnaire6/{id}', "QuestionController6@questionnaire6")->name('form.Qnaire6');
 //Route::get('form/questionnaire5/{id}', ['as' => 'form/questionnaire5', 'uses' => 'QuestionController5@BlockageId'])->name('form.Qnaire5');
@@ -152,14 +166,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('report/chart', 'HighChartController@index')->name('report/chart');
-Route::get('report/chart/{amp}', 'HighChartController@prob');
 
-Route::get('chart', 'HighChartController@indexAll')->name('chartAll');
-Route::get('chart/{amp}', 'HighChartController@probAll');
-
-Route::get('report/chartCM', 'HighChartController@indexCM')->name('report/chart');
-Route::get('report/chartCM/{amp}', 'HighChartController@probCM');
 
 Route::get('form/getMapByUser', 'MapController@getMapByUser')->name('form.getMapByUser');
 Route::get('form/getDamage/{amp}', 'MapController@getDamage')->name('form.getDamage');
@@ -169,19 +176,17 @@ Route::get('form/getDamage_admin/{app}', 'MapController@getDamage_admin');
 
 
 // CM Fang
-Route::get('api/getcm', 'MapController@getDamageByAmpCM');
-Route::get('api/getDamageCM/{amp}', 'MapController@getDamageCM');
-Route::get('api/blockage', 'DataFangController@getBlockage');
-Route::get('api/blockage/{amp}/{tambol}', 'DataFangController@getBlockageAmp');
-Route::get('api/reportBlockage/{id}', ['as' => 'reportBlockage', 'uses' => 'DataFangController@reportBlockage']);
-
-Route::get('api/chart/{amp}', 'DataFangController@apiCM');
-
-Route::get('admin',function () {return view('auth/admin');});
-Route::get('api/expertPDF/{id}', 'DataFangController@expertPDF');
-Route::get('api/solution', "DataForExpertController@getsolutionPDF");
+// Route::get('api/getcm', 'MapController@getDamageByAmpCM');
+// Route::get('api/getDamageCM/{amp}', 'MapController@getDamageCM');
+// Route::get('api/blockage', 'DataFangController@getBlockage');
+// Route::get('api/blockage/{amp}/{tambol}', 'DataFangController@getBlockageAmp');
+// Route::get('api/reportBlockage/{id}', ['as' => 'reportBlockage', 'uses' => 'DataFangController@reportBlockage']);
+// Route::get('api/chart/{amp}', 'DataFangController@apiCM');
+// Route::get('api/expertPDF/{id}', 'DataFangController@expertPDF');
+// Route::get('api/solution', "DataForExpertController@getsolutionPDF");
 
 // report Expet
+Route::get('admin',function () {return view('auth/admin');});
 Route::get('/expert','DataForExpertController@getDataforexpert')->name('expert.expert');
 Route::get('expert/report/{id}','DataForExpertController@reportExpert')->name('expert.report');
 Route::post('expert/edit','FormBlockageController@updateForExpert')->name('expert.edit');
@@ -270,3 +275,20 @@ Route::get('problem_report/{tumbol}/{aumpol}',[BlockagesController::class, 'repo
 // manual input province && ampol && tumbol (in menu we don't have)
 Route::get('find_location_blk/{province}/{ampol}/{tumbol}',[BlockagesController::class, 'find_location_blk']);
 Route::get('listadress',[BlockagesController::class, 'list_of_address']);
+// ความถี่การเกิดน้ำท่วม
+// Route::get('damage_freq/{feq}', [BlockagesController::class,'damage_freq']);
+// เเนวทางการเเก้ไขปัญหา 
+// Route::get('solution_mockup/{id_location}',[BlockagesController::class, 'solution_mockup']);
+ 
+// ------------------------------- //
+
+
+// test long la // 
+// Route::get('testing_long_la/{longitude}/{latitude}',[BlockagesController::class, 'testing_long_la']);
+// Route::get('find_distance/{longitude}/{latitude}', [BlockagesController::class, 'location_long_la']);
+
+
+// ----------------------------------- //
+// ----------------------------------- //
+// ----------------------------------- //
+ 

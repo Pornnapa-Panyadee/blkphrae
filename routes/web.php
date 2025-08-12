@@ -32,8 +32,8 @@ Route::get('/','DataForExpertController@getDataforHome');
 // //Route::get('/fang/{fang}','DataForExpertController@getDataforHome');
 Route::get('box','DataForExpertController@getDataforHome1');
 Route::get('login', function () {return view('auth/login');});
-Route::get('/register', function () { abort(404); });
-// Route::get('register', function () {return view('auth/register');});
+// Route::get('/register', function () { abort(404); });
+Route::get('register', function () {return view('auth/register');});
 // verify message 
 Route::get('/verifymessage', function(){return view('verifyMessage');});
 

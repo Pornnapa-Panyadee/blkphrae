@@ -81,7 +81,7 @@
         </main>
     </div>
    
-    <script src="{{ asset('js/chooseLocation.js') }}"></script>
+    <!-- <script src="{{ asset('js/chooseLocation.js') }}"></script> -->
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main-js.js') }}"></script>

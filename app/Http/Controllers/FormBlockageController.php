@@ -34,14 +34,14 @@ class FormBlockageController extends Controller
  
         // dd (Auth::user()->status_work);
         if($name=="admin" && $verify_status == 1){
-            $data = Blockage::with('blockageLocation')->orderBy('created_at', 'DESC')->get();
+            $data = Blockage::with('blockageLocation')->orderBy('created_at', 'ASC')->get();
             // dd($data);
     
             return view('report_admin',compact('data'));
             
         }else if(Auth::user()->status_work=="expert" ||Auth::user()->status_work=="admin" ){
             $user= Auth::user()->name;
-            $data = Blockage::with('blockageLocation')->orderBy('created_at', 'DESC')->get();
+            $data = Blockage::with('blockageLocation')->orderBy('created_at', 'ASC')->get();
             // dd($data[0]);
             return view('pages.homeblockage',compact('data','user'));
         }else if($verify_status == 0){
@@ -50,14 +50,14 @@ class FormBlockageController extends Controller
 
         }else if(Auth::user()->status_work=="expert" ){
             $user=Auth::user()->id ;
-            $data = Blockage::with('blockageLocation','User')->orderBy('survey_date', 'DESC')->get();
+            $data = Blockage::with('blockageLocation','User')->orderBy('survey_date', 'ASC')->get();
             return view('pages.homeblockage',compact('data'));
 
         }else{
             $user=Auth::user()->id ;
        
             // dd($user=Auth::user()->id);
-            $data = Blockage::with('blockageLocation','User')->where('blk_user_id', $user)->orderBy('survey_date', 'DESC')->get();
+            $data = Blockage::with('blockageLocation','User')->where('blk_user_id', $user)->orderBy('survey_date', 'ASC')->get();
             //dd($data);
             //return response()->json($data);
             //exit;

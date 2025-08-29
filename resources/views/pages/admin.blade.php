@@ -131,20 +131,17 @@
                         </div>
                     </div>
 
-                     <!-- ============================================================== -->
-                                            <!-- basic table  -->
-                                            <!-- ============================================================== -->
-                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <div class="card">
-                                                     <div class="card-header">
-                                                        <h3 class="card-title">ตารางแสดงข้อมูลสิ่งกีดขวางทางน้ำในลำน้ำคูคลองและถนน  </h3>                                                       
-                                                        
-                                                            
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <form id="amp" name="amp" action="/#tableData" method="get">
-
-                                                            <table align="right" width=40%>
+                    <!-- ============================================================== -->
+                    <!-- basic table  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">ตารางแสดงข้อมูลสิ่งกีดขวางทางน้ำในลำน้ำคูคลองและถนน  </h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="amp" name="amp" action="/#tableData" method="get">
+                                    <table align="right" width=40%>
                                                                 <tr>
                                                                     <td style="padding-left:20px;">
                                                                         <h4 class="card-title">
@@ -237,12 +234,10 @@
     <script src="{{ asset('/js/dataTables.bootstrap4.min.js') }}"></script> 
    
    
-    <script src="{{ asset('js/chooseLocation_table.js') }}"></script>
+    <!-- <script src="{{ asset('js/chooseLocation_table.js') }}"></script> -->
     <script src="{{ asset('js/jquery.ui.touch-punch.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/L.Control.Layers.Tree.css')}}" crossorigin=""/>
     <script src="{{ asset('/js/L.Control.Layers.Tree.js')}}"></script>
-    
-   
     <script src="{{ asset('js/location/location_report.js') }}"></script>
 
 
@@ -266,8 +261,7 @@
                                     maxZoom: 20,
                                     subdomains:['mt0','mt1','mt2','mt3'], attribution: mbAttr
                                 });
-    //    layers: [borders,osm,stations1,stations2,stations3,stations4,stations5,stations6,stations7,stations8,stations9,stations10,stations11,stations12],
-        var map = L.map('map', {
+       var map = L.map('map', {
             layers: [borders,osm,stations1,stations2,stations3],
             center: [x,y],
             zoom: 11,
@@ -380,7 +374,6 @@
             addPin(stations1,0,mo);
             addPin(stations2,1,mo);
             addPin(stations3,2,mo);
-            addPin(stations4,3,mo);
 
      
         var baseTree = {

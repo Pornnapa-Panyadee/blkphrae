@@ -50,14 +50,14 @@ class FormBlockageController extends Controller
 
         }else if(Auth::user()->status_work=="expert" ){
             $user=Auth::user()->id ;
-            $data = Blockage::with('blockageLocation','User')->orderBy('survey_date', 'ASC')->get();
+            $data = Blockage::with('blockageLocation','User')->orderBy('created_at', 'ASC')->get();
             return view('pages.homeblockage',compact('data'));
 
         }else{
             $user=Auth::user()->id ;
        
             // dd($user=Auth::user()->id);
-            $data = Blockage::with('blockageLocation','User')->where('blk_user_id', $user)->orderBy('survey_date', 'ASC')->get();
+            $data = Blockage::with('blockageLocation','User')->where('blk_user_id', $user)->orderBy('created_at', 'ASC')->get();
             //dd($data);
             //return response()->json($data);
             //exit;

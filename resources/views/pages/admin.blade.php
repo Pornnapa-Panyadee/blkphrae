@@ -242,165 +242,112 @@
 
 
     <script type="text/javascript">
+        const amp = ["เมืองแพร่", "ร้องกวาง", "ลอง", "สูงเม่น", "เด่นชัย", "สอง", "วังชิ้น", "หนองม่วงไข่"];
+        const stationLayers = amp.map(() => new L.LayerGroup());
+        const borders = new L.LayerGroup();
 
-        var stations1 = new L.LayerGroup();
-        var stations2 = new L.LayerGroup();
-        var stations3 = new L.LayerGroup();
-        var borders = new L.LayerGroup();
-        
         const x = 18.290015, y = 99.9656525;
-
-        var mbAttr = 'Phrae',
-           mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidmFucGFueWEiLCJhIjoiY2loZWl5ZnJ4MGxnNHRwbHp5bmY4ZnNxOCJ9.IooQB0jYS_4QZvIq7gkjeQ';
-                                                                          
-        osm = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-                                    maxZoom: 20,
-                                    subdomains:['mt0','mt1','mt2','mt3'], attribution: mbAttr
-                                });
-        osmBw = L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
-                                    maxZoom: 20,
-                                    subdomains:['mt0','mt1','mt2','mt3'], attribution: mbAttr
-                                });
-       var map = L.map('map', {
-            layers: [borders,osm,stations1,stations2,stations3],
-            center: [x,y],
-            zoom: 11,
+        const mbAttr = 'Phrae';
+        
+        const osm = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            maxZoom: 20, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'], attribution: mbAttr
         });
-  
+
+        const osmBw = L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+            maxZoom: 20, subdomains: ['mt0', 'mt1', 'mt2', 'mt3'], attribution: mbAttr
+        });
+
+        const map = L.map('map', {
+            layers: [borders, osm, ...stationLayers],
+            center: [x, y],
+            zoom: 9,
+        });
+
+        // KML Layer 
+        omnivore.kml('{{ asset('kml/PHRAE.kml') }}').on('ready', function () {
+            this.setStyle({ fillOpacity: 0, color: "#1f3d3f", weight: 4 });
+        }).addTo(borders);
+
         var pin = L.icon({
-                    iconUrl: '{{ asset('images/logo/pin.png') }}',
-                    iconRetinaUrl:'{{ asset('images/logo/pin.png') }}',
-                    iconSize: [20, 36],
-                    iconAnchor: [5, 30],
-                     popupAnchor: [0, 0]
-                 });
+            iconUrl: '{{ asset('images/logo/pin.png') }}',
+            iconRetinaUrl: '{{ asset('images/logo/pin.png') }}',
+            iconSize: [20, 36],
+            iconAnchor: [5, 30],
+            popupAnchor: [0, 0]
+        });
 
         var pinMO = L.icon({
-                    iconUrl: '{{ asset('images/logo/pin.png') }}',
-                    iconRetinaUrl:'{{ asset('images/logo/pin.png') }}',
-                    iconSize: [10, 16],
-                    iconAnchor: [5, 30],
-                     popupAnchor: [0, 0]
-                 });
-        var pin_s = L.icon({
-                    iconUrl: '{{ asset('images/logo/pin_survey.png') }}',
-                    iconRetinaUrl:'{{ asset('images/logo/pin_survey.png') }}',
-                    iconSize: [20, 36],
-                    iconAnchor: [5, 30],
-                     popupAnchor: [0, 0]
-                 });
+            iconUrl: '{{ asset('images/logo/pin.png') }}',
+            iconRetinaUrl: '{{ asset('images/logo/pin.png') }}',
+            iconSize: [10, 16],
+            iconAnchor: [5, 30],
+            popupAnchor: [0, 0]
+        });
 
-        var pinMO_s = L.icon({
-                    iconUrl: '{{ asset('images/logo/pin_survey.png') }}',
-                    iconRetinaUrl:'{{ asset('images/logo/pin_survey.png') }}',
-                    iconSize: [10, 16],
-                    iconAnchor: [5, 30],
-                     popupAnchor: [0, 0]
-                 });
-        var pinoff = L.icon({
-                    iconUrl: '{{ asset('images/logo/pinoffline.png') }}',
-                    iconRetinaUrl:'{{ asset('images/logo/pinoffline.png') }}',
-                    iconSize: [20, 36],
-                    iconAnchor: [5, 30],
-                     popupAnchor: [0, 0]
-                 });
+        const mo = window.matchMedia("(max-width: 700px)").matches ? 0 : 1;
 
-        var pinMOoff = L.icon({
-                    iconUrl: '{{ asset('images/logo/pinoffline.png') }}',
-                    iconRetinaUrl:'{{ asset('images/logo/pinoffline.png') }}',
-                    iconSize: [10, 16],
-                    iconAnchor: [5, 30],
-                     popupAnchor: [0, 0]
-                 });
-           
-        var amp=["1","0","2"]
-        
-        function addPin(ampName,k,mo){
-            $.getJSON("{{ asset('form/getDamage_admin') }}/"+amp[k], 
-                function (data){
-						 for (i=0;i<data.length;i++){
-                            // for (i=0;i<1;i++){
-                            
-                            var lo =data[i].geometry.coordinates+ '';;
-							var x=lo.split(',')[1];
-                            var y=lo.split(',')[0];
-                           
-                           // alert (x);
-                           var text ="<font style=\"font-family: 'Mitr';\" size=\"3\"COLOR=#1AA90A > รหัส :<a href='{{ asset('/report/pdf')}}/" +data[i].blk_id+"' target=\"_blank\"> " + data[i].blk_code + "</font><br>";
-                        
-                            text1 = "<font style=\"font-family: 'Mitr';\" size=\"2\"COLOR=#466DF3 > ลำน้ำ : "+ data[i].river+ "</font><br>";
-                            text2 = "<font style=\"font-family: 'Mitr';\" size=\"2\"COLOR=#466DF3 >ที่ตั้ง : "+ data[i].location +" ต."+ data[i].tambol +" อ."+ data[i].district +"</font><br>";
-                            text3 = "<br><table align=\"center\"><tr><td width=47%><a href='{{ asset('/report/pdf') }}/"+data[i].blk_id+"' target=\"_blank\"> " + "<button class=\"btn btn-sm btn-outline-light\"><i class=\"fas fa-eye\"></i> รายงาน</button> </a></td> <td  width=6%></td><td  width=47%><a href='{{ asset('/report/photo') }}/"+data[i].blk_id+"' target=\"_blank\"> " + "<button class=\"btn btn-sm btn-outline-light\"><i class=\"fas fa-images\"></i> ภาพประกอบ</button> </a></td></tr></table>";
-                            
-                            // text3 = "<a href='{{ asset('/report/pdf') }}/"+data[i].blk_id+"' target=\"_blank\"> " + "<i class=\"fas fa-eye\"></i> รายงาน</a>";
-                            // text3="fff";
-                            // alert(mo);
-                            if(mo==0){
-                                if(data[i].pin_status=="2"){
-                                    L.marker([x,y],{icon: pinMO}).addTo(ampName).bindPopup(text+text1+text2+text3);  
-                                }else if (data[i].pin_status=="1"){
-                                    L.marker([x,y],{icon: pinMO_s}).addTo(ampName).bindPopup(text+text1+text2+text3);  
-                                }else{
-                                    L.marker([x,y],{icon: pinMOoff}).addTo(ampName).bindPopup(text+text1+text2+text3);  
-                                }
-                                
-                            }else{
-                                if(data[i].pin_status=="2"){
-                                    L.marker([x,y],{icon: pin}).addTo(ampName).bindPopup(text+text1+text2+text3);  
-                                }else if(data[i].pin_status=="1"){
-                                    L.marker([x,y],{icon: pin_s}).addTo(ampName).bindPopup(text+text1+text2+text3);  
-                                }else{
-                                    L.marker([x,y],{icon: pinoff}).addTo(ampName).bindPopup(text+text1+text2+text3);  
-                                }
-                            }
-                                                   
-                       
-						}//end for
-					}
-										
-				);
-                
+        function addPin(layer, index, mo) {
+            $.getJSON("{{ asset('form/getDamage') }}/" + amp[index], function (data) {
+                data.forEach(item => {
+                    const [y, x] = item.geometry.coordinates;
+                    const text = `
+                        <font style="font-family: 'Mitr';" size="3" color="#1AA90A">
+                            รหัส : <a href='report/pdf/${item.blk_id}' target="_blank">${item.blk_code}</a>
+                        </font><br>
+                        <font style="font-family: 'Mitr';" size="2" color="#466DF3">ลำน้ำ : ${item.river}</font><br>
+                        <font style="font-family: 'Mitr';" size="2" color="#466DF3">ที่ตั้ง : ${item.location} ต.${item.tambol} อ.${item.district}</font><br><br>
+                        <table align="center">
+                            <tr>
+                                <td width=47%>
+                                    <a href='report/pdf/${item.blk_id}' target="_blank">
+                                        <button class="btn btn-sm btn-outline-light"><i class="fas fa-eye"></i> รายงาน</button>
+                                    </a>
+                                </td>
+                                <td width=6%></td>
+                                <td width=47%>
+                                    <a href='report/photo/${item.blk_id}' target="_blank">
+                                        <button class="btn btn-sm btn-outline-light"><i class="fas fa-images"></i> ภาพประกอบ</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>`;
+                    L.marker([x, y], { icon: mo ? pin : pinMO }).addTo(layer).bindPopup(text);
+                });
+            });
+
         }
-            var mx = window.matchMedia("(max-width: 700px)");
-            // x=x.matches;
-            
-            if(mx.matches){
-                mo=0;
-                // alert(x.matches);
-            }else{
-                mo=1;
-            }
-            
-            addPin(stations1,0,mo);
-            addPin(stations2,1,mo);
-            addPin(stations3,2,mo);
 
-     
-        var baseTree = {
+        // Add pins for all amphurs
+        stationLayers.forEach((layer, i) => addPin(layer, i, mo));
+
+        // === BaseLayers as radio buttons ===
+        const baseTree = {
             label: 'BaseLayers',
             noShow: true,
-            children: [  {label: ' แผนที่ภูมิประเทศ (Streets)', layer: osm},
-                         {label: ' แผนที่ภาพถ่ายผ่านดาวเทียม (Satellite)', layer: osmBw},
-                     ]
-        };
-        var overlays = {
-            label: ' สถานะ',
-            selectAllCheckbox: true,
             children: [
-                { label:" สำรวจจากผู้เชี่ยวชาญ",layer: stations3,},
-                { label:" พิจารณาเรียบร้อย",layer: stations1,},
-                { label:" กำลังรอการพิจารณา",layer: stations2,}
+                { label: 'แผนที่ภูมิประเทศ (Streets)', layer: osm },
+                { label: 'แผนที่ภาพถ่ายผ่านดาวเทียม (Satellite)', layer: osmBw},
             ]
         };
 
-        var ctl = L.control.layers.tree(baseTree, null );
-    
+        // === Overlay Amphoe Layers with checkbox and selectAll ===
+        const overlayTree = {
+            label: ' ข้อมูลสิ่งกีดขวางรายอำเภอ',
+            selectAllCheckbox: true,
+            children: amp.map((name, i) => ({
+                label: " "+name,
+                layer: stationLayers[i]
+            }))
+        };
+
+        const ctl = L.control.layers.tree(baseTree, overlayTree, {
+            namedToggle: false,
+            selectorBack: false,
+            // closedSymbol: '&#8862; &#x1f5c0;',
+            // openedSymbol: '&#8863; &#x1f5c1;'
+        });
 
         ctl.addTo(map).collapseTree().expandSelected();
-
-        ctl.setOverlayTree(overlays).collapseTree().expandSelected();
-
-
     </script>
 
 </body>

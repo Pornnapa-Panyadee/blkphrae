@@ -307,7 +307,7 @@
 
         var pinMOoff = L.icon({
                     iconUrl: '{{ asset('images/logo/pinoffline.png') }}',
-                    iconRetinaUrl:'{{ asset('images/pinoffline/pin.png') }}',
+                    iconRetinaUrl:'{{ asset('images/logo/pinoffline.png') }}',
                     iconSize: [10, 16],
                     iconAnchor: [5, 30],
                      popupAnchor: [0, 0]

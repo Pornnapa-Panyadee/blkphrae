@@ -420,7 +420,7 @@ class MapController extends Controller
         
         for ($i=0;$i<count($data);$i++){
                     
-            if($data[$i]->blockage->status_approve==$app){
+            // if($data[$i]->blockage->status_approve==$app){
                 $fq = ProblemDetail::select('prob_level')->where ('problem_details.blk_id', $data[$i]->blockage->blk_id)->get();
                 //dd($fq);
                 // $point =($data[0]->blk_start_location);
@@ -442,7 +442,7 @@ class MapController extends Controller
                         'district'=>$data[$i]->blk_district,
                         'geometry'=> $data[$i]->blk_start_location,
                         'level'=>$risk];
-             }
+            //  }
             
         }
 

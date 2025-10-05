@@ -58,9 +58,10 @@ class MapController extends Controller
         }
         for($k=0;$k<count($amp);$k++){
             $data = BlockageLocation::with('blockage','blockage.River')->where('blk_district',$amp[$k])->get();   
+            // dd($data[0]->blockage);
             $level1=0;$level2=0;$level3=0;
             for ($i=0;$i<count($data);$i++){
-                if($data[$i]->blockage->status_approve=="2"){
+                if($data[$i]->blockage->status_approve=="0"){
                     // $fq = ProblemDetail::select('prob_level')->where ('problem_details.blk_id', $data[$i]->blockage->blk_id)->get();
                     $damage=$data[$i]->blockage->damage_level;
                     $damageData=json_decode($damage);
@@ -86,7 +87,8 @@ class MapController extends Controller
                 'level3'=>$level3,
             ];
         }
-        // dd($amp_data[0]['amp']);
+        // dd($ampL1,$ampL2,$ampL3);
+
         return view('general.map', compact('amp_data','ampL1','ampL2','ampL3'));
        
       
@@ -298,7 +300,7 @@ class MapController extends Controller
         }
         
         $data = BlockageLocation::with('blockage','blockage.River')->where('blk_district',$amp)->get();
-       
+        // dd($data);
         
         $result=[];
         $properties['time']=[];

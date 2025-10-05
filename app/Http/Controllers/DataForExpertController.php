@@ -61,8 +61,8 @@ class DataForExpertController extends Controller
             }           
             $districtData['data'] = Page::getDistrict();
             // dd($districtData);
-            // return view('pages.home',compact('data','districtData','x','y','z'));
-            return view('pages.underconstruction');
+            return view('pages.home',compact('data','districtData','x','y','z'));
+            // return view('pages.underconstruction');
         }else{
             $username = Auth::user()->name;
             $lastname = Auth::user()->LName;

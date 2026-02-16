@@ -36,7 +36,7 @@
                             </li>
 
                              <li class="nav-item dropdown " style="padding-bottom:-20px;">
-                                <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">คลังความรู้ </a>
+                                <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">คลังความรู้</a>
                                 <div class="dropdown-menu dropdown-menu-right" style="padding:20px 0 20px ; background-color:##b9d6e6 ; font-size:16px;"  >
                                     <!-- <a class="dropdown-item" href="https://www.landslide-chiangrai.net/">แผนที่ความเสี่ยงดินถล่มเชิงพลวัต </a> -->
                                     <!-- <a class="dropdown-item" href="{{ asset('/idf/chiangmai')}}" target=\"_blank\">IDF curves รายอำเภอ (จ.เชียงใหม่) </a> -->
@@ -51,10 +51,16 @@
                                     <!-- <a class="dropdown-item" href="{{ asset('/pdf/คู่มือline botสำหรับผู้ใช้งานทั่วไป_draf 1-03-22.pdf')}}" target=\"_blank\">คู่มือการใช้งานระบบช่วยสนับสนุนข้อมูล (Line)</a> -->
                                 </div>
                             </li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link nav-user-img" href="{{ asset('/projectInfomation')}}" >เกี่ยวกับโครงการ</a>
-                               
+                            <li class="nav-item dropdown " style="padding-bottom:-20px;">
+                                <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">เกี่ยวกับโครงการ</a>
+                                <div class="dropdown-menu dropdown-menu-right" style="padding:20px 0 20px ; background-color:##b9d6e6 ;"  >
+                                    <a class="dropdown-item" href="{{ asset('/projectInfomation')}}">รายละเอียดโครงการ</a>
+                                    <a class="dropdown-item" href="https://watercenter.scmc.cmu.ac.th/weir/phrae/">โครงการย่อย1 : ฝาย จ.แพร่</a>
+                                    <a class="dropdown-item" href="{{ asset('/')}}">โครงการย่อย2 : สิ่งกีดขวางทางน้ำ จ.แพร่</a>
+                                </div>
                             </li>
+
+                           
                             <!-- <li class="nav-item dropdown ">
                                 <a class="nav-link nav-user-img" href="{{ asset('/contact')}}" >ติดต่อเรา</a>
                                

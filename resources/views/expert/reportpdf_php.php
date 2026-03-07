@@ -146,51 +146,41 @@
                 }
             }
             function checkDamage($flood,$waste,$other){
-                
+
                 if($flood=="0" && $waste=="0" && $other=="0"){
-                    return "  -";
-                } else if($flood!=NULL||$flood!=0){
+                    return "-";
+                }
+                if($flood != 0 && $flood != NULL){
                     return "น้ำท่วม";
-                }else if($waste!=NULL||$waste!=0){
+                }
+                if($waste != 0 && $waste != NULL){
                     return "น้ำเสีย";
-                }else if($other!=NULL||$other!=0){
-                    return "อื่นๆ";
+                }
+                if($other != 0 && $other != NULL){
+                    return "อื่นๆ ($other)";
                 }
             }
-            function checklevel($flood,$waste,$other) {
-                if($flood!=NULL||$flood!=0){
-                    if($flood=="low"){
-                        $level="น้อย";
-                    }else if( $flood=="medium"){
-                        $level="ปานกลาง";
-                    }else if( $flood=="high") {
-                        $level="มาก";
-                    }else{
-                        $level=NULL;
-                    }
-                }else if($waste!=NULL||$waste!=0){
-                    if($waste=="low"){
-                        $level="น้อย";
-                    }else if( $waste=="medium"){
-                        $level="ปานกลาง";
-                    }else if( $waste=="high") {
-                        $level="มาก";
-                    }else{
-                        $level=NULL;
-                    }
-
-                }else if($other!=NULL||$other!=0){
-                    if($other=="low"){
-                        $level="น้อย";
-                    }else if( $other=="medium"){
-                        $level="ปานกลาง";
-                    }else if( $other=="high") {
-                        $level="มาก";
-                    }else{
-                        $level=NULL;
-                    }
+            function checklevel($flood, $waste, $other) {
+                $val = null;
+                if (!empty($flood) && $flood != 0) {
+                    $val = $flood;
+                } elseif (!empty($waste) && $waste != 0) {
+                    $val = $waste;
+                } elseif (!empty($other) && $other != 0) {
+                    $val = $other;
                 }
-                    return $level;
+
+                // map ค่า level
+                switch ($val) {
+                    case 'low':
+                        return 'น้อย';
+                    case 'medium':
+                        return 'ปานกลาง';
+                    case 'high':
+                        return 'มาก';
+                    default:
+                        return '-';
+                }
             }
             function checkRisk($level,$fq){
                 if($level=="มาก"){
@@ -252,7 +242,7 @@
                                             <img src='images/footer/hii.png' width="50px" style="margin:10px;">
                                         </td>
                                         <td width="60%">
-                                            <div style="font-weight: bold;"> ข้อมูลสภาพปัญหาและแนวทางการแก้ไขปัญหาเบื้องต้นของตำแหน่งการกีดขวางทางน้ำ จังหวัดเชียงใหม่</div>
+                                            <div style="font-weight: bold;"> ข้อมูลสภาพปัญหาและแนวทางการแก้ไขปัญหาเบื้องต้นของตำแหน่งการกีดขวางทางน้ำ จังหวัดแพร่</div>
                                         </td>
                                         <td align="left">
                                             <img src='images/footer/cmu.png' width="50px" style="margin:10px;">
@@ -396,8 +386,8 @@
                                             <td ><font style="font-weight: bold;">วัสดุที่ใช้ดาดผิวของลำน้ำ</font>  <?php echo checkZero($data[0]->blk_surface_detail)?> </td>
                                         </tr>
                                         <tr>
-                                            <td width=20%><font style="font-weight: bold;">ลักษณะความเสียหาย</font>   <?php echo checkDamage($damageData->flood,$damageData->waste,$damageData->other->level)?> </td>
-                                            <td width=30%><font style="font-weight: bold;">ระดับ</font>  <?php echo checklevel($damageData->flood,$damageData->waste,$damageData->other->level)?> </td>
+                                            <td width=25%><font style="font-weight: bold;">ลักษณะความเสียหาย</font>   <?php echo checkDamage($damageData->flood,$damageData->waste,$damageData->other->detail)?> </td>
+                                            <td width=20%><font style="font-weight: bold;">ระดับ</font>  <?php echo checklevel($damageData->flood,$damageData->waste,$damageData->other->level)?> </td>
                                             <td><font style="font-weight: bold;">ความถี่ที่เกิดความเสียหาย</font>   <?php echo checkZero($data[0]->damage_frequency)?>  </td>
 
                                             <?php 
@@ -517,11 +507,11 @@
                                                 <tr>
                                                     <td align="center" width="35%"><div style="margin-top:10px;"><img src="<?php echo ($expert[0]->exp_pixmap); ?>" width=100px;></div></td>
                                                     <td align="center">
-                                                        <img src="images/expert/map/<?php echo($data[0]->blk_code)?>.jpg"  width=140px;></div>
+                                                         <div style="margin-top:5px;"><img src="<?php echo ($expert[0]->exp_pix1); ?>"  width=150px;></div>
                                                     </td>
                                                     <td align="center" width="35%"> 
-                                                        <div style="margin-top:5px;"><img src="<?php echo ($expert[0]->exp_pix1); ?>"  width=120px;></div>
-                                                        <div style="margin-top:5px;"><img src="<?php echo ($expert[0]->exp_pix2); ?>"  width=120px;></div>
+                                                       
+                                                        <div style="margin-top:5px;"><img src="<?php echo ($expert[0]->exp_pix2); ?>"  width=150px;></div>
                                                     </td>
                                                 </tr>
                                         <?php  }else{ ?>

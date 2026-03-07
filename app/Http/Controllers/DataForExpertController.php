@@ -604,11 +604,11 @@ class DataForExpertController extends Controller
                 ->join('blockages', 'blockages.blk_location_id', '=', 'blockage_locations.blk_location_id')
                 ->join('rivers', 'rivers.river_id', '=', 'blockages.river_id')
                 ->join('experts','experts.blk_code','=','blockages.blk_code')
-                ->orderBy('blockages.created_at', 'DESC')
+                ->orderBy('blockages.created_at', 'ASC')
                 ->get();
                 
                 $blk=Blockage::with('blockageLocation')->get();
-                // dd($blk);
+                // dd($data);
                 return view('expert.expert',compact('data','districtData','blk'));
                 
             }else if(Auth::user()->status_work=="surveyor" ||Auth::user()->status_work=="surveyor1" ){
@@ -859,9 +859,9 @@ class DataForExpertController extends Controller
             $hum_other="อื่นๆ (".$problem[0]->hum_other_detail.")";
         }
         $hum= [$hum_structure,$infra,$hum_soil_cover,$hum_trash,$hum_other];
-        // dd($damageData);
+        //dd($damageData);
         $current_end = json_decode($current_end);
-        // dd($expert);
+        //dd($expert);
         $name_file=$data[0]->blk_code.".pdf";
         $pdf = PDF::loadView('expert.reportpdf_php' ,compact('current_brigde','expert','data','nut','hum','damageData','damage_type','pastData','current_start','current_narrow_new','current_end','problem','photo_Blockage','photo_Land','photo_Riverbefore','photo_Riverprob','photo_Riverafter','photo_Probsketch','solution_id','project_id'));
         return $pdf->stream($name_file);

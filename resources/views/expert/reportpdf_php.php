@@ -215,7 +215,7 @@
                  if($text=="0" ||$text==NULL||$text=="-" ){
                         return " ";
                  }else{
-                    $text = number_format($text, 4);
+                    $text = number_format($text, 3);
                     return " ความลาดชันท้องน้ำ ".$text;
                  }
             }

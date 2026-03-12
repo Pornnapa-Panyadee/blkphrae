@@ -282,8 +282,9 @@
             function checkW($text){
                  if($text=="0" ||$text==NULL ||$text=="-"){
                         return " ";
-                 }else{
-                        return " ความลาดชันท้องน้ำ ".$text;
+                }else{
+                    $text = number_format($text, 3);
+                    return " ความลาดชันท้องน้ำ ".$text;
                  }
             }
             function DateTimeThai($strDate)
@@ -542,17 +543,17 @@
                                                                 }else{
                                                                     echo "ข้อมูลพื้นที่รับน้ำของตำแหน่งที่เกิดปัญหา <br>";  
                                                                     if($expert[$i][0]->exp_a25==0){ 
-                                                                        echo "A = ".checkZero($expert[$i][0]->exp_area)." ตารางกิโลเมตร&nbsp;";
-                                                                        echo "L0 = ".checkZero($expert[$i][0]->exp_L0)." กิโลเมตร&nbsp;";
+                                                                        echo "A = ".checkZero(number_format($expert[$i][0]->exp_area, 2))." ตารางกิโลเมตร&nbsp;";
+                                                                        echo "L0 = ".checkZero(number_format($expert[$i][0]->exp_L0, 2))." กิโลเมตร&nbsp;";
                                                                         echo "H = ".checkZero($expert[$i][0]->exp_H)." เมตร&nbsp;";
-                                                                        echo "C = ".checkZero($expert[$i][0]->exp_C)."<br>";
-                                                                        echo "tc = ".checkZero($expert[$i][0]->exp_tc)." ชั่วโมง&nbsp;&nbsp;";
-                                                                        echo "I = ".checkZero($expert[$i][0]->exp_I)." มิลลิเมตร/ชั่วโมง&nbsp;";
-                                                                        echo "อัตราการไหลสูงสุด = ".checkZero($expert[$i][0]->exp_maxflow)." ลบ.ม./วินาที &nbsp;<br>";
+                                                                        echo "C = ".checkZero(number_format($expert[$i][0]->exp_C, 2))."<br>";
+                                                                        echo "tc = ".checkZero(number_format($expert[$i][0]->exp_tc, 2))." ชั่วโมง&nbsp;&nbsp;";
+                                                                        echo "I = ".checkZero(number_format($expert[$i][0]->exp_I, 2))." มิลลิเมตร/ชั่วโมง&nbsp;";
+                                                                        echo "อัตราการไหลสูงสุด = ".checkZero(number_format($expert[$i][0]->exp_maxflow, 2))." ลบ.ม./วินาที &nbsp;<br>";
                                                                         echo "Return period = ".checkZero($expert[$i][0]->exp_returnPeriod)." ปี";
                                                                     }else{
-                                                                        echo "A = ".checkZero($expert[$i][0]->exp_area)." ตารางกิโลเมตร&nbsp;";
-                                                                        echo "อัตราการไหลสูงสุด = ".checkZero($expert[$i][0]->exp_maxflow)." ลบ.ม./วินาที &nbsp;<br>";
+                                                                        echo "A = ".checkZero(number_format($expert[$i][0]->exp_area, 2))." ตารางกิโลเมตร&nbsp;";
+                                                                        echo "อัตราการไหลสูงสุด = ".checkZero(number_format($expert[$i][0]->exp_maxflow, 2))." ลบ.ม./วินาที &nbsp;<br>";
                                                                         echo "Return period = ".checkZero($expert[$i][0]->exp_returnPeriod)." ปี";
                                                                     }
                                                                 }

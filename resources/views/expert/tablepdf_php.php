@@ -45,6 +45,7 @@
             /* margin-bottom:1rem; */
             background-color:transparent;
             border-collapse: collapse;
+            table-layout: fixed;
         }
         thead,th{
             /* font-weight: bold; */
@@ -181,6 +182,7 @@
                                         if($text=="0" ||$text==NULL||$text=="-"  ){
                                             return " ";
                                         }else{
+                                            $text = number_format($text, 3);
                                             return " ความลาดชันท้องน้ำ ".$text;
                                         }
                                     }
@@ -218,7 +220,7 @@
                                                 if($data[$i]['detail'][$j]->river_name=="คลองส่งน้ำจากชลประทานสองซ้ายสิบเก้าซ้าย"){
                                                     $data[$i]['detail'][$j]->river_name="คลองส่งน้ำจากชลประทาน<br>สองซ้ายสิบเก้าซ้าย";
                                                 }
-                                                $loc=$vill."/".$data[$i]['detail'][$j]->blk_tumbol."<br>".$data[$i]['detail'][$j]->river_name;
+                                                $loc=$vill."/<br>".$data[$i]['detail'][$j]->blk_tumbol."<br>".$data[$i]['detail'][$j]->river_name;
                                                 if($data[$i]['detail'][$j]->maning==1){
                                                     $text= "เนื่องจากตำแหน่งกีดขวางทางน้ำ<br>
                                                             ของลำน้ำหรือลำเหมืองนี้ไม่สามารถ<br>
@@ -230,32 +232,32 @@
                                                     $area=$text. "<br>โดยมีอัตราการไหลสูงสุด ".checkZero($data[$i]['detail'][$j]->exp_maxflow)."m<sup>3</sup>/s";
                                                 }else{
                                                     if($data[$i]['detail'][$j]->exp_area<25){
-                                                        $A  ="A = ".checkZero($data[$i]['detail'][$j]->exp_area)." km<sup>2</sup> ";
-                                                        $L0 ="L0 = ".checkZero($data[$i]['detail'][$j]->exp_L0)." km ";
-                                                        $H  ="H = ".checkZero($data[$i]['detail'][$j]->exp_H) ." m";
-                                                        $C  ="C = ".checkZero($data[$i]['detail'][$j]->exp_C);
-                                                        $tc ="tc = ".checkZero($data[$i]['detail'][$j]->exp_tc)." hr";
-                                                        $I  ="I = ".checkZero($data[$i]['detail'][$j]->exp_I). " mm"; 
-                                                        $rate="อัตราการไหลสูงสุด = ".checkZero($data[$i]['detail'][$j]->exp_maxflow). "m<sup>3</sup>/s";
-                                                        $rp ="Return period = ".checkZero($data[$i]['detail'][$j]->exp_returnPeriod). "ปี";
+                                                        $A  ="A=".checkZero(number_format($data[$i]['detail'][$j]->exp_area, 2))." km<sup>2</sup> ";
+                                                        $L0 ="L0=".checkZero(number_format($data[$i]['detail'][$j]->exp_L0, 2))." km ";
+                                                        $H  ="H=".checkZero(number_format($data[$i]['detail'][$j]->exp_H, 2)) ." m";
+                                                        $C  ="C=".checkZero(number_format($data[$i]['detail'][$j]->exp_C,2))."";
+                                                        $tc ="tc=".checkZero(number_format($data[$i]['detail'][$j]->exp_tc, 2))." hr";
+                                                        $I  ="I=".checkZero(number_format($data[$i]['detail'][$j]->exp_I, 2)). " mm"; 
+                                                        $rate="อัตราการไหลสูงสุด=".checkZero(number_format($data[$i]['detail'][$j]->exp_maxflow, 2)). "m<sup>3</sup>/s";
+                                                        $rp ="Return period=".checkZero($data[$i]['detail'][$j]->exp_returnPeriod). "ปี";
                                                         $area = $A." ".$L0."<br> ".$H." ".$C." ".$tc."<br>".$rate." <br>".$rp;
                                                     }else{
-                                                        $A  ="A = ".checkZero($data[$i]['detail'][$j]->exp_area)." km<sup>2</sup> ";
-                                                        $rate="อัตราการไหลสูงสุด = ".checkZero($data[$i]['detail'][$j]->exp_maxflow). " m<sup>3</sup>/s";
-                                                        $rp ="Return period = ".checkZero($data[$i]['detail'][$j]->exp_returnPeriod). "ปี";
+                                                        $A  ="A = ".checkZero(number_format($data[$i]['detail'][$j]->exp_area, 2))." km<sup>2</sup> ";
+                                                        $rate="อัตราการไหลสูงสุด = ".checkZero(number_format($data[$i]['detail'][$j]->exp_maxflow, 2)). " m<sup>3</sup>/s";
+                                                        $rp ="Return period = ".checkZero(number_format($data[$i]['detail'][$j]->exp_returnPeriod, 2)). "ปี";
                                                         $area = $A." <br>".$rate." <br>".$rp;
                                                     }
                                                 }
                                              
                                                 echo "<tr  align=\"center\" ><td>".($j+1)."</td>";
-                                                echo "<td>".$data[$i]['detail'][$j]->blk_code."</td>";
-                                                echo "<td>".$loc."</td>";                                                
-                                                echo "<td>".$data[$i]['detail'][$j]->lat_utm_start."</td>";
-                                                echo "<td>".$data[$i]['detail'][$j]->lng_utm_start."</td>";
-                                                echo "<td>".DateTimeThai($data[$i]['detail'][$j]->created_at)."</td>";
-                                                echo "<td class=\"test2\" width=\"20%\">".$data[$i]['detail'][$j]->survey_problem."</td>";
-                                                echo "<td class=\"test2\"> ".$area."</td>";
-                                                echo "<td class=\"test2\" width=\"30%\">".$data[$i]['detail'][$j]->survey_solution." ".$slope."</td></tr>";
+                                                echo "<td width=\"10%\">".$data[$i]['detail'][$j]->blk_code."</td>";
+                                                echo "<td width=\"15%\">".$loc."</td>";                                                
+                                                echo "<td width=\"5%\">".$data[$i]['detail'][$j]->lat_utm_start."</td>";
+                                                echo "<td width=\"5%\">".$data[$i]['detail'][$j]->lng_utm_start."</td>";
+                                                echo "<td width=\"6%\">".DateTimeThai($data[$i]['detail'][$j]->created_at)."</td>";
+                                                echo "<td class=\"test2\" width=\"15%\">".$data[$i]['detail'][$j]->exp_problem."</td>";
+                                                echo "<td class=\"test2\" width=\"18%\"> ".$area."</td>";
+                                                echo "<td class=\"test2\" width=\"15%\">".$data[$i]['detail'][$j]->exp_solution." ".$slope."</td></tr>";
                                         
                                             } 
                                         } 

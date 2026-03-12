@@ -227,18 +227,18 @@
                                             }
                                             $loc=$vill."/".$data[$i]['detail'][$j]->blk_tumbol."/".$data[$i]['detail'][$j]->blk_district."<br>".$data[$i]['detail'][$j]->river_name;
                                             if($data[$i]['detail'][$j]->exp_area<25){
-                                                $A  ="A=".checkZero($data[$i]['detail'][$j]->exp_area)." km<sup>2</sup> ";
-                                                $L0 ="L0=".checkZero($data[$i]['detail'][$j]->exp_L0)." km ";
-                                                $H  ="H=".checkZero($data[$i]['detail'][$j]->exp_H) ." m";
-                                                $C  ="C=".checkZero($data[$i]['detail'][$j]->exp_C);
-                                                $tc ="tc=".checkZero($data[$i]['detail'][$j]->exp_tc)." hr";
-                                                $I  ="I=".checkZero($data[$i]['detail'][$j]->exp_I). " mm"; 
-                                                $rate="อัตราการไหลสูงสุด=".checkZero($data[$i]['detail'][$j]->exp_maxflow). "m<sup>3</sup>/s";
+                                                $A  ="A=".checkZero(number_format($data[$i]['detail'][$j]->exp_area, 2))." km<sup>2</sup> ";
+                                                $L0 ="L0=".checkZero(number_format($data[$i]['detail'][$j]->exp_L0, 2))." km ";
+                                                $H  ="H=".checkZero(number_format($data[$i]['detail'][$j]->exp_H, 2)) ." m";
+                                                $C  ="C=".checkZero(number_format($data[$i]['detail'][$j]->exp_C,2))."";
+                                                $tc ="tc=".checkZero(number_format($data[$i]['detail'][$j]->exp_tc, 2))." hr";
+                                                $I  ="I=".checkZero(number_format($data[$i]['detail'][$j]->exp_I, 2)). " mm"; 
+                                                $rate="อัตราการไหลสูงสุด=".checkZero(number_format($data[$i]['detail'][$j]->exp_maxflow, 2)). "m<sup>3</sup>/s";
                                                 $rp ="Return period=".checkZero($data[$i]['detail'][$j]->exp_returnPeriod). "ปี";
                                                 $area = $A." ".$L0." ".$H."<br> ".$C." ".$tc."<br>".$rate." <br>".$rp;
                                             }else{
-                                                $A  ="A=".checkZero($data[$i]['detail'][$j]->exp_area)." km<sup>2</sup> ";
-                                                $rate="อัตราการไหลสูงสุด=".checkZero($data[$i]['detail'][$j]->exp_maxflow). "m<sup>3</sup>/s";
+                                                $A  ="A=".checkZero(number_format($data[$i]['detail'][$j]->exp_area, 2))." km<sup>2</sup> ";
+                                                $rate="อัตราการไหลสูงสุด=".checkZero(number_format($data[$i]['detail'][$j]->exp_maxflow, 2)). "m<sup>3</sup>/s";
                                                 $rp ="Return period=".checkZero($data[$i]['detail'][$j]->exp_returnPeriod). "ปี";
                                                 $area = $A."<br> ".$rate." <br>".$rp;
                                             }

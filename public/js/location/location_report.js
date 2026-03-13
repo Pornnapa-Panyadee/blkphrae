@@ -2,7 +2,6 @@ $(document).ready(function () {
     function resetTumbolOptions() {
         $('#blk_tumbol').empty().append('<option value="sum">-- เลือกตำบล --</option>');
     }
-
     // โหลดอำเภอของจังหวัดแพร่
     $.getJSON('https://watercenter.scmc.cmu.ac.th/blockage/phrae/getdistrict/แพร่', function (data) {
         $.each(data, function (i, obj) {

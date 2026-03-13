@@ -581,13 +581,13 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td align="center" width="35%"><div style="margin-top:10px;"><img src="<?php echo ($expert[0]->exp_pixmap); ?>" width=100px;></div></td>
+                                                    <td align="center" width="35%"><div style="margin-top:10px;"><img src="<?php echo ($expert[$i][0]->exp_pixmap); ?>" width=100px;></div></td>
                                                     <td align="center">
-                                                         <div style="margin-top:5px;"><img src="<?php echo ($expert[0]->exp_pix1); ?>"  width=150px;></div>
+                                                         <div style="margin-top:5px;"><img src="<?php echo ($expert[$i][0]->exp_pix1); ?>"  width=150px;></div>
                                                     </td>
                                                     <td align="center" width="35%"> 
                                                        
-                                                        <div style="margin-top:5px;"><img src="<?php echo ($expert[0]->exp_pix2); ?>"  width=150px;></div>
+                                                        <div style="margin-top:5px;"><img src="<?php echo ($expert[$i][0]->exp_pix2); ?>"  width=150px;></div>
                                                     </td>
                                                 </tr>
                                             </tbody>

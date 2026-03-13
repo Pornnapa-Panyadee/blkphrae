@@ -114,7 +114,7 @@
                                                         <td align="right">ตำบล : </td>
                                                         <td>
                                                             <select id="blk_tumbol" name="tumbol" required onchange="validateTambol(this.id)">
-                                                                <option value=''>-- เลือกตำบล --</option>
+                                                                <option value='sum'>-- เลือกตำบล --</option>
                                                             </select>
                                                         </td>
                                                     </tr>

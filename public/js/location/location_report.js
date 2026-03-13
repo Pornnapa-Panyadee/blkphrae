@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    function resetTumbolOptions() {
+        $('#blk_tumbol').empty().append('<option value="sum">-- เลือกตำบล --</option>');
+    }
+
     // โหลดอำเภอของจังหวัดแพร่
     $.getJSON('https://watercenter.scmc.cmu.ac.th/blockage/phrae/getdistrict/แพร่', function (data) {
         $.each(data, function (i, obj) {
@@ -9,7 +13,7 @@ $(document).ready(function () {
     // เมื่อเลือกอำเภอแล้วโหลดตำบล
     $('#blk_district').on('change', function () {
         var district = $(this).val();
-        $('#blk_tumbol').empty().append('<option value="">-- เลือกตำบล --</option>');
+        resetTumbolOptions();
 
         if (district) {
             $.getJSON('https://watercenter.scmc.cmu.ac.th/blockage/phrae/subdistrict/' + encodeURIComponent(district), function (res) {
@@ -32,6 +36,13 @@ $(document).ready(function () {
                     $('#blk_village').append('<option value="หมู่ที่ ' + obj.vill_moo + ' ' + obj.vill_name + '"> หมู่ที่ ' + obj.vill_moo + ' ' + obj.vill_name + '</option>');
                 });
             });
+        }
+    });
+
+    $('form').on('submit', function () {
+        var tumbol = $('#blk_tumbol');
+        if (tumbol.length && !tumbol.val()) {
+            tumbol.val('sum');
         }
     });
 

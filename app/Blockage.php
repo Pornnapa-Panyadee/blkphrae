@@ -31,6 +31,7 @@ class Blockage extends Model
         'survey_engineer',
         'survey_engineer_position',
         'survey_engineer_unit',
+        'status_approve',
 
 
     ];

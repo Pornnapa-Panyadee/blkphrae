@@ -58,12 +58,20 @@ class MapController extends Controller
         }
         for($k=0;$k<count($amp);$k++){
             $data = BlockageLocation::with('blockage','blockage.River')->where('blk_district',$amp[$k])->get();   
-            // dd($data[0]->blockage);
+            //dd($data[19]);
             $level1=0;$level2=0;$level3=0;
             for ($i=0;$i<count($data);$i++){
-                if($data[$i]->blockage->status_approve=="0"){
+                if (!isset($data[$i])) {
+                    continue;
+                }
+                $blk = Blockage::where('blk_location_id',$data[$i]->blk_location_id)->get();
+                //dd($blk[0]->status_approve);
+                if($blk->isEmpty()){
+                    continue;   
+                }
+                if($blk[0]->status_approve=="2" ){
                     // $fq = ProblemDetail::select('prob_level')->where ('problem_details.blk_id', $data[$i]->blockage->blk_id)->get();
-                    $damage=$data[$i]->blockage->damage_level;
+                    $damage=$blk[0]->damage_level;
                     $damageData=json_decode($damage);
                     $level=checklevel($damageData->flood,$damageData->waste,$damageData->other->level);
                     $risk=checkRisk($level,$data[$i]->blockage->damage_frequency);
@@ -80,6 +88,7 @@ class MapController extends Controller
                  }
                 
             }
+            
             $amp_data [] = [
                 'amp'=>$amp[$k],
                 'level1'=>$level1,
@@ -87,7 +96,7 @@ class MapController extends Controller
                 'level3'=>$level3,
             ];
         }
-        // dd($ampL1,$ampL2,$ampL3);
+        //dd($amp_data);
 
         return view('general.map', compact('amp_data','ampL1','ampL2','ampL3'));
        
